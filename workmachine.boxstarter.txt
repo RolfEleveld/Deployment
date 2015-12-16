@@ -1,0 +1,59 @@
+# Make sure policies are all done
+Update-ExecutionPolicy Unrestricted
+
+# Setup Environment variables
+if (!(Test-Path -Path D:\Tmp )) { 
+   mkdir D:\Tmp
+}
+if (!(Test-Path -Path D:\Temp )) { 
+   mkdir D:\Temp
+}
+[Environment]::SetEnvironmentVariable("TMP",  "D:\Temp", "User")    
+[Environment]::SetEnvironmentVariable("TEMP", "D:\Temp", "User") 
+[Environment]::SetEnvironmentVariable("TMP",  "D:\Tmp", "Machine") 
+[Environment]::SetEnvironmentVariable("TEMP", "D:\Tmp", "Machine") 
+
+# Libarary folders
+Move-LibraryDirectory "Personal"    "$env:UserProfile\OneDrive\Documents"
+Move-LibraryDirectory "Desktop"     "$env:UserProfile\OneDrive\Desktop"
+Move-LibraryDirectory "Music"       "$env:UserProfile\OneDrive\Music"
+Move-LibraryDirectory "Pictures"    "$env:UserProfile\OneDrive\Pictures"
+Move-LibraryDirectory "Video"       "$env:UserProfile\OneDrive\Video"
+Move-LibraryDirectory "Downloads"   "$env:UserProfile\OneDrive\Downloads"
+Move-LibraryDirectory "Favorites"   "$env:UserProfile\OneDrive\Favorites"
+
+# Explorer options
+Set-ExplorerOptions -showHidenFilesFoldersDrives -showFileExtensions
+
+# Windows Settings
+Enable-RemoteDesktop
+Enable-MicrosoftUpdate
+Enable-PSRemoting -Force
+
+# Programs
+cinst sysinternals
+cinst fiddler4
+cinst notepad2
+cinst 7zip.install
+cinst skype
+cinst paint.net
+cinst windirstat
+cinst linqpad4
+cinst FoxitReader
+cinst IrfanView
+cinst VisualStudio2015Community -packageParameters "--Features SQL"
+cinst handbrake
+cinst r.project
+cinst r.studio
+cinst github
+cinst Office365ProPlus -version 2016.3
+
+# Scaffold out folder system 
+# C:\dev 
+if (!(Test-Path -Path C:\dev )) { 
+   mkdir C:\dev
+} 
+# C:\dev\GitHub 
+if (!(Test-Path -Path C:\dev\GitHub )) { 
+   mkdir C:\dev\GitHub 
+} 
