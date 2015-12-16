@@ -14,13 +14,13 @@ if (!(Test-Path -Path D:\Temp )) {
 [Environment]::SetEnvironmentVariable("TEMP", "D:\Tmp", "Machine") 
 
 # Libarary folders
-Move-LibraryDirectory "Personal"    "$env:UserProfile\OneDrive\Documents"
-Move-LibraryDirectory "Desktop"     "$env:UserProfile\OneDrive\Desktop"
-Move-LibraryDirectory "Music"       "$env:UserProfile\OneDrive\Music"
-Move-LibraryDirectory "Pictures"    "$env:UserProfile\OneDrive\Pictures"
-Move-LibraryDirectory "Video"       "$env:UserProfile\OneDrive\Video"
-Move-LibraryDirectory "Downloads"   "$env:UserProfile\OneDrive\Downloads"
-Move-LibraryDirectory "Favorites"   "$env:UserProfile\OneDrive\Favorites"
+Move-LibraryDirectory "Personal"     "$env:UserProfile\OneDrive\Documents"
+Move-LibraryDirectory "Desktop"      "$env:UserProfile\OneDrive\Desktop"
+Move-LibraryDirectory "My Music"     "$env:UserProfile\OneDrive\Music"
+Move-LibraryDirectory "My Pictures"  "$env:UserProfile\OneDrive\Pictures"
+Move-LibraryDirectory "My Videos"    "$env:UserProfile\OneDrive\Videos"
+Move-LibraryDirectory "My Downloads" "$env:UserProfile\OneDrive\Downloads"
+Move-LibraryDirectory "Favorites"    "$env:UserProfile\OneDrive\Favorites"
 
 # Explorer options
 Set-ExplorerOptions -showHidenFilesFoldersDrives -showFileExtensions
