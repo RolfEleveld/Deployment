@@ -64,9 +64,9 @@
         "VS-2015-Comm-VSU1-AzureSDK-2.8-W10T-N-x64",
         "VS-2015-Enterprise-AzureSDK-2.7-WS2012R2",
         "VS-2015-Community-AzureSDK-2.7-WS2012R2",
-        "VS-2013-Community-VSU5-AzureSDK-2.7-WS2012R2"
+        "VS-2013-Community-VSU5-AzureSDK-2.7-WS2012R2",
         "Windows10-Enterprise-10240-201507.29",
-        "Windows10-Enterprise-N-10240-201507.29",
+        "Windows10-Enterprise-N-10240-201507.29"
       ],
       "metadata": {
         "description": "Which version of Visual Studio you would like to deploy"
