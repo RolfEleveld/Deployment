@@ -23,10 +23,10 @@ Move-LibraryDirectory "Downloads"    "$env:UserProfile\OneDrive\Downloads"
 Move-LibraryDirectory "Favorites"    "$env:UserProfile\OneDrive\Favorites"
 
 # Explorer options
-Set-ExplorerOptions -showHidenFilesFoldersDrives -showFileExtensions
+Set-WindowsExplorerOptions -EnableShowFileExtensions -EnableShowFullPathInTitleBar
 
 # Windows Settings
-Enable-RemoteDesktop
+#Enable-RemoteDesktop
 Enable-MicrosoftUpdate
 Enable-PSRemoting -Force
 
