@@ -28,7 +28,7 @@ Set-WindowsExplorerOptions -EnableShowFileExtensions -EnableShowFullPathInTitleB
 # Windows Settings
 #Enable-RemoteDesktop
 Enable-MicrosoftUpdate
-Enable-PSRemoting -Force
+#Enable-PSRemoting -Force
 
 # Programs
 cinst sysinternals
