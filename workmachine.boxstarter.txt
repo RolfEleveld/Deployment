@@ -18,7 +18,7 @@ Move-LibraryDirectory "Personal"     "$env:UserProfile\OneDrive\Documents"
 Move-LibraryDirectory "Desktop"      "$env:UserProfile\OneDrive\Desktop"
 Move-LibraryDirectory "My Music"     "$env:UserProfile\OneDrive\Music"
 Move-LibraryDirectory "My Pictures"  "$env:UserProfile\OneDrive\Pictures"
-Move-LibraryDirectory "Videos"       "$env:UserProfile\OneDrive\Videos"
+#Move-LibraryDirectory "Videos"       "$env:UserProfile\OneDrive\Videos"
 Move-LibraryDirectory "My Downloads" "$env:UserProfile\OneDrive\Downloads"
 Move-LibraryDirectory "Favorites"    "$env:UserProfile\OneDrive\Favorites"
 
