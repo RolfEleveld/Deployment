@@ -107,7 +107,7 @@
       }
     },
     {
-      "name": "VNet01",
+      "name": "vnet",
       "type": "Microsoft.Network/virtualNetworks",
       "location": "[parameters('deployLocation')]",
       "apiVersion": "2015-05-01-preview",
