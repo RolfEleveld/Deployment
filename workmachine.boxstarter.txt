@@ -41,7 +41,7 @@ cinst windirstat
 cinst linqpad4
 cinst FoxitReader
 cinst IrfanView
-cinst VisualStudio2015Community -packageParameters "--Features SQL"
+#cinst VisualStudio2015Community -packageParameters "--Features SQL"
 cinst handbrake
 cinst r.project
 cinst r.studio
