@@ -1,6 +1,6 @@
 # set up package providers
 Get-PackageProvider -Name NuGet -ForceBootstrap
-Start-DscConfiguration –Path .\Development_Machine_DSC_Data –Wait –Verbose
+Start-DscConfiguration -Path .\Development_Machine_DSC_Data -Wait -Verbose
 
 # add Choclatey
 # command line: @powershell -NoProfile -ExecutionPolicy Bypass -Command "Invoke-Expression ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))" && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin
