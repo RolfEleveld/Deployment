@@ -3,6 +3,9 @@ Import-Module AzureRM
 Import-Module Azure
 Login-AzureRmAccount
 $loc = "West Europe"
+$sub = "Visual Studio Enterprise with MSDN"
+Get-AzureRmSubscription –SubscriptionName $sub | Select-AzureRmSubscription
+Get-AzureSubscription –SubscriptionName $sub | Select-AzureSubscription
 
 # stole below from http://blogs.technet.com/b/heyscriptingguy/archive/2013/06/03/generating-a-new-password-with-windows-powershell.aspx
 Function GET-Temppassword() {
@@ -23,7 +26,8 @@ $name = "vs15w10azuresdvm01"
 $vm = New-AzureVMConfig `
     -Name $name `
     -InstanceSize Small `
-    -ImageName $image
+    -ImageName $image 
+#    -MediaLocation -missing according to error
 
 # add admin account
 $vm = Add-AzureProvisioningConfig `
