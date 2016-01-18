@@ -25,15 +25,15 @@ Function GET-Temppassword() {
     return $TempPassword
 }
 $ascii=$NULL;For ($a=33;$a –le 126;$a++) {$ascii+=,[char][byte]$a }
-$password = GET-Temppassword –length 128 –sourcedata $ascii
+$password = GET-Temppassword –length 122 –sourcedata $ascii #max 123 characters
 
 # answers JSON object
 $ans = @{
     vmAdminUserName="AdminWin10CloudDev"
-    adminPassword=$password
+    vmAdminPassword=$password
     deployLocation=$loc
     storageName="win10clouddevstorage"
-    vmName="Win10CloudDev"
+    vmName=$name
 #    vmSize="Standard_D2"
 #    storageType="Premium_LRS"
 #    vmVisualStudioVersion="VS-2015-Pro-VSU1-AzureSDK-2.8-W10T-N-x64"
@@ -54,7 +54,6 @@ if ($rgroup -eq $null){ # resource group not found
 
 # using JSON to delpoy
 Test-AzureRmResourceGroupDeployment -ResourceGroupName $resourcegroup `
-    -Name $name `
     -TemplateFile $templatePath `
     -TemplateParameterObject $ans
 
