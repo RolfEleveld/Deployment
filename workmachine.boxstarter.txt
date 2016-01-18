@@ -8,17 +8,18 @@ if (!(Test-Path -Path D:\Tmp )) {
 if (!(Test-Path -Path D:\Temp )) { 
    mkdir D:\Temp
 }
-[Environment]::SetEnvironmentVariable("TMP",  "D:\Temp", "User")    
-[Environment]::SetEnvironmentVariable("TEMP", "D:\Temp", "User") 
-[Environment]::SetEnvironmentVariable("TMP",  "D:\Tmp", "Machine") 
-[Environment]::SetEnvironmentVariable("TEMP", "D:\Tmp", "Machine") 
+# below seems to cause issues
+#[Environment]::SetEnvironmentVariable("TMP",  "D:\Temp", "User")    
+#[Environment]::SetEnvironmentVariable("TEMP", "D:\Temp", "User") 
+#[Environment]::SetEnvironmentVariable("TMP",  "D:\Tmp", "Machine") 
+#[Environment]::SetEnvironmentVariable("TEMP", "D:\Tmp", "Machine") 
 
 # Libarary folders
 Move-LibraryDirectory "Personal"     "$env:UserProfile\OneDrive\Documents"
 Move-LibraryDirectory "Desktop"      "$env:UserProfile\OneDrive\Desktop"
 Move-LibraryDirectory "My Music"     "$env:UserProfile\OneDrive\Music"
 Move-LibraryDirectory "My Pictures"  "$env:UserProfile\OneDrive\Pictures"
-#Move-LibraryDirectory "Videos"       "$env:UserProfile\OneDrive\Videos"
+#Move-LibraryDirectory "Videos"      "$env:UserProfile\OneDrive\Videos"
 Move-LibraryDirectory "Downloads"    "$env:UserProfile\OneDrive\Downloads"
 Move-LibraryDirectory "Favorites"    "$env:UserProfile\OneDrive\Favorites"
 
@@ -41,19 +42,17 @@ cinst windirstat
 cinst linqpad4
 cinst FoxitReader
 cinst IrfanView
-#cinst VisualStudio2015Community -packageParameters "--Features SQL"
 cinst handbrake
 cinst r.project
 cinst r.studio
 cinst github
-cinst Office365ProPlus -version 2016.3
 
 # Scaffold out folder system 
 # C:\dev 
-if (!(Test-Path -Path C:\dev )) { 
-   mkdir C:\dev
-} 
+#if (!(Test-Path -Path C:\dev )) { 
+#   mkdir C:\dev
+#} 
 # C:\dev\GitHub 
-if (!(Test-Path -Path C:\dev\GitHub )) { 
-   mkdir C:\dev\GitHub 
-} 
+#if (!(Test-Path -Path C:\dev\GitHub )) { 
+#   mkdir C:\dev\GitHub 
+#} 
