@@ -6,11 +6,8 @@ Start-DscConfiguration -Path .\Development_Machine_DSC_Data -Wait -Verbose
 # command line: @powershell -NoProfile -ExecutionPolicy Bypass -Command "Invoke-Expression ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))" && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin
 Invoke-Expression ((New-Object Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 # deploy Chocolatey packages:
-choco install office365proplus
 choco install notepad2
 choco install git
-choco install r.project
-choco install r.studio
 choco install fiddler4
 choco install 7zip
 choco install paint.net
