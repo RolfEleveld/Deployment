@@ -5,8 +5,11 @@ $sub = "Visual Studio Enterprise with MSDN"
 $name = "win10clouddev"
 $resourcegroup = "Win10CloudDev"
 $templatePath = "https://raw.githubusercontent.com/RolfEleveld/Deployment/master/devmachine.azuredeploy.json"
-$answerfile = ".\deploy azure resourcemanager template devmachine.answers.json"
+#make sure you have created the module with Publish-AzureVMDscConfiguration -ConfigurationPath .\Development_Machine_DSC_Data.ps1  -ConfigurationArchivePath .\Development_Machine_DSC_Data.ps1.zip
+$dscPath = "https://raw.githubusercontent.com/RolfEleveld/Deployment/master/Development_Machine_DSC_Data.ps1.zip"
+$dscConfig = "Development_Machine_DSC_Data.psd1//DevelopmentMachineConfiguration"
 $loc = "West Europe"
+
 
 #make sure we have the Azure Powershell components
 #(new-object Net.WebClient).DownloadString("http://psget.net/GetPsGet.ps1") | iex
@@ -38,6 +41,8 @@ $ans = @{
 #    storageType="Premium_LRS"
 #    vmVisualStudioVersion="VS-2015-Pro-VSU1-AzureSDK-2.8-W10T-N-x64"
     vmIPPublicDnsName=$name
+    modulesUrl=$dscPath
+    configurationFunction=$dscConfig
 }
 
 # set up resource manager account
@@ -61,7 +66,6 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName $resourcegroup `
     -Name $name `
     -TemplateFile $templatePath `
     -TemplateParameterObject $ans
-#    -TemplateParameterFile $answerfile
 
 #you could now RDP into the machine with:
 

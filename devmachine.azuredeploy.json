@@ -21,6 +21,7 @@
     },
     "deployLocation": {
       "type": "string",
+      "defaultValue": "West Europe",
       "allowedValues": [
         "West US",
         "West Europe"
@@ -77,6 +78,19 @@
       "metadata": {
         "description": "Globally unique name for per region for the public IP address. For instance, myVMuniqueIP.westus.cloudapp.azure.com. It must conform to the following regular expression: ^[a-z][a-z0-9-]{1,61}[a-z0-9]$."
       }
+    },
+    "modulesUrl": {
+      "type": "string",
+      "metadata": {
+        "description": "URL for the DSC configuration module. NOTE: Can be a Github url(raw) to the .zip or .psd1 file"
+      }
+    },
+    "configurationFunction": {
+      "type": "string",
+      "defaultValue": "configuration.psd1\\configurationscetion",
+      "metadata": {
+        "description": "DSC configuration function to call"
+      }
     }
   },
   "variables": {
@@ -89,7 +103,7 @@
     "vmVnetID": "[resourceId('Microsoft.Network/virtualNetworks', 'vnet')]",
     "vmSubnetRef": "[concat(variables('VMVnetID'), '/subnets/', variables('Vnet01Subnet1Name'))]",
     "vmStorageAccountContainerName": "vhds",
-    "vmNicName": "[concat(parameters('VMName'), 'NetworkInterface')]",
+    "vmNicName": "[concat(parameters('vmName'), 'NetworkInterface')]",
     "vmIP01Name": "ipcard01"
   },
   "resources": [
@@ -175,8 +189,15 @@
         "hardwareProfile": {
           "vmSize": "[parameters('vmSize')]"
         },
+        "networkProfile": {
+          "networkInterfaces": [
+            {
+              "id": "[resourceId('Microsoft.Network/networkInterfaces', variables('vmNicName'))]"
+            }
+          ]
+        },
         "osProfile": {
-          "computername": "[parameters('vmName')]",
+          "computerName": "[parameters('vmName')]",
           "adminUsername": "[parameters('vmAdminUsername')]",
           "adminPassword": "[parameters('vmAdminPassword')]"
         },
@@ -195,13 +216,6 @@
             "caching": "ReadWrite",
             "createOption": "FromImage"
           }
-        },
-        "networkProfile": {
-          "networkInterfaces": [
-            {
-              "id": "[resourceId('Microsoft.Network/networkInterfaces', variables('vmNicName'))]"
-            }
-          ]
         }
       },
       "resources": [ ]
@@ -221,7 +235,29 @@
           "domainNameLabel": "[parameters('vmIPPublicDnsName')]"
         }
       }
-    }
+    },
+    {
+      "type": "Microsoft.Compute/virtualMachines/extensions",
+      "name": "[concat(parameters('vmName'),'/', '_dscVmExtensionName')]",
+      "apiVersion": "2015-05-01-preview",
+      "location": "[parameters('deployLocation')]",
+      "dependsOn": [
+        "[concat('Microsoft.Compute/virtualMachines/', parameters('vmName'))]"
+      ],
+      "properties": {
+        "publisher": "Microsoft.Powershell",
+        "type": "DSC",
+        "typeHandlerVersion": "2.8",
+        "settings": {
+          "ModulesUrl": "[parameters('modulesUrl')]",
+          "ConfigurationFunction": "[parameters('configurationFunction')]",
+          "Properties": {
+            "MachineName": "[parameters('vmName')]"
+          }
+        },
+        "protectedSettings": null
+      }
+    } 
   ],
   "outputs": {}
 }
