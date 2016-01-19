@@ -7,7 +7,7 @@ $resourcegroup = "Win10CloudDev"
 $templatePath = "https://raw.githubusercontent.com/RolfEleveld/Deployment/master/devmachine.azuredeploy.json"
 #make sure you have created the module with Publish-AzureVMDscConfiguration -ConfigurationPath .\Development_Machine_DSC_Data.ps1  -ConfigurationArchivePath .\Development_Machine_DSC_Data.ps1.zip
 $dscPath = "https://raw.githubusercontent.com/RolfEleveld/Deployment/master/Development_Machine_DSC_Data.ps1.zip"
-$dscConfig = "Development_Machine_DSC_Data.psd1//DevelopmentMachineConfiguration"
+$dscConfig = "Development_Machine_DSC_Data.ps1//DevelopmentMachineConfiguration"
 $loc = "West Europe"
 
 
