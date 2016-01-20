@@ -252,7 +252,7 @@
           "ModulesUrl": "[parameters('modulesUrl')]",
           "ConfigurationFunction": "[parameters('configurationFunction')]",
           "Properties": {
-            "computerName": "[parameters('vmName')]"
+            "MachineName": "[parameters('vmName')]"
           }
         },
         "protectedSettings": null

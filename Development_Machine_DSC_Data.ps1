@@ -1,8 +1,11 @@
 Configuration DevelopmentMachineConfiguration {
     param(
-        [string[]]$computerName="localhost"
+        [string]$MachineName="localhost"
     )
-    Node $computerName {
+
+    Import-DscResource –ModuleName ’PSDesiredStateConfiguration’
+
+    Node $MachineName {
         User AddRolf {
             UserName = "rolf@bajomero.com"
             Ensure = "Present"

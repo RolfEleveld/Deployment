@@ -21,7 +21,7 @@ choco install handbrake
 Start-DscConfiguration -ComputerName 'localhost' -wait -force 
 
 # add me as an admin may need to be substituted by MicrosoftAccount\mail@live.com
-net user /add "rolf@bajomero.com" 
+net user /add "rolf@bajomero.com" # returns an error for name needs to be domain\name
 net localgroup Administrators /add "rolf@bajomero.com"
 
 #https://raw.githubusercontent.com/RolfEleveld/Deployment/master/Development_Machine_DSC_Data.ps1

@@ -71,5 +71,10 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName $resourcegroup `
 # see deployment errors or results.
 Get-AzureRmResourceGroupDeployment -ResourceGroupName $resourcegroup -Name $name
 
+#Log in with 
+"RDP to $name.westeurope.cloudapp.net"
+"Log in with $name\AdminWin10CloudDev using password: $password"
+"add rolf@bajomero.com to users, make account admin and give RDP access."
+
 # cleanup the entire resourcegroup!
 #Remove-AzureRmResourceGroup -Name $resourcegroup -ErrorAction SilentlyContinue -Force
