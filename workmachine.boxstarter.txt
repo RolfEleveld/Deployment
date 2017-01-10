@@ -1,3 +1,4 @@
+# Run the script via: START http://boxstarter.org/package/nr/url?https://raw.githubusercontent.com/RolfEleveld/Deployment/master/workmachine.boxstarter.txt
 # Make sure policies are all done
 Update-ExecutionPolicy Unrestricted
 
